@@ -283,6 +283,20 @@
             margin-top: 5px;
             text-align: right;
         }
+
+        /* Стили для иконок */
+        .icon-gold {
+            color: var(--accent-gold);
+            margin-right: 4px;
+        }
+        .icon-red {
+            color: #d00;
+            margin-right: 4px;
+        }
+        .icon-warning {
+            color: #ff9900;
+            margin-right: 4px;
+        }
     </style>
 </head>
 <body>
@@ -297,11 +311,11 @@
                 <h1>Гайд для проживания студента в Москве</h1>
                 <p>Стратегия покупки недвижимости для тех, чьи дети поступили в лучшие вузы страны.</p>
                 <div class="highlight-box">
-                    <p style="margin-bottom: 0; font-size: 0.9rem; font-weight: 600;">Логика владения против экономики аренды. ⚖️</p>
+                    <p style="margin-bottom: 0; font-size: 0.9rem; font-weight: 600;"><i class="fas fa-scale-balanced icon-gold"></i> Логика владения против экономики аренды.</p>
                 </div>
             </div>
             <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
-                <p style="font-size: 1rem; font-weight: 700;">Лысый Риелтор</p>
+                <p style="font-size: 1rem; font-weight: 700;">Лысый Риелтор <i class="fas fa-user-tie" style="color: var(--accent-gold);"></i></p>
                 <p style="font-size: 0.8rem; color: var(--text-medium);">Только цифры и юридическая чистота.</p>
             </div>
         </div>
@@ -312,18 +326,21 @@
             <p class="fade-in">Нужно понимать сразу: <strong>мест в общежитиях на всех не хватает.</strong> Это факт.</p>
             <p class="fade-in" style="transition-delay: 0.1s;">Значительная часть фондов отдается иностранным студентам для поддержания международного статуса вузов.</p>
             <div class="highlight-box fade-in" style="transition-delay: 0.2s; border-left-color: #d00;">
-                <p style="font-size: 0.85rem; font-weight: 700; color: #d00; margin-bottom: 5px;">Приоритет при заселении:</p>
+                <p style="font-size: 0.85rem; font-weight: 700; color: #d00; margin-bottom: 5px;"><i class="fas fa-exclamation-triangle icon-red"></i> Приоритет при заселении:</p>
                 <p style="font-size: 0.85rem; margin-bottom: 0;">Многодетные, малоимущие, дети участников СВО и социальные льготники. Это справедливо, но оставляет обычного студента за бортом.</p>
             </div>
-             <div class="highlight-box fade-in" style="transition-delay: 0.4s; border-left-color: #ff0000; background: #ffe5e5;">
-        <p style="font-size: 0.9rem; font-weight: 800; color: #a10000; margin-bottom: 8px; text-transform: uppercase;">⚠️ Драма, о которой молчат</p>
-        <p style="font-size: 0.85rem; margin-bottom: 8px;">Даже если вашему ребенку «повезёт» и он получит заветную койку в общежитии, готовьтесь к худшему. Шумные соседи, круглосуточные вечеринки, антисанитария и полное отсутствие условий для занятий — это не исключение, а суровая реальность большинства студенческих общаг.</p>
-        <p style="font-size: 0.85rem; margin-bottom: 8px; font-weight: 700;">По статистике, до 30% первокурсников, живущих в общежитиях, сталкиваются с серьезными проблемами успеваемости уже после первой сессии. Постоянный стресс, недосып и конфликты с соседями выматывают настолько, что учёба уходит на второй план.</p>
-        <p style="font-size: 0.85rem; margin-bottom: 0; background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #ffaaaa;">
-            🚨 <strong>Финал часто печален:</strong> вместо красного диплома и блестящей карьеры — «хвосты», академические отпуска, а то и отчисление. Год, а то и два потерянного времени, стресс для всей семьи и разочарование в ребёнке. 
-            <br><em><b>Вы готовы рискнуть будущим ребёнка ради мифической выгоды?</b></em>
-        </p>
-    </div>
+            <p class="fade-in" style="transition-delay: 0.3s; font-size: 0.9rem;">Если вы не в этих списках — аренда или покупка станут вашим вопросом №1 уже в августе.</p>
+            
+            <!-- Драматический блок -->
+            <div class="highlight-box fade-in" style="transition-delay: 0.4s; border-left-color: #ff0000; background: #ffe5e5;">
+                <p style="font-size: 0.9rem; font-weight: 800; color: #a10000; margin-bottom: 8px; text-transform: uppercase;"><i class="fas fa-bolt icon-red"></i> Драма, о которой молчат</p>
+                <p style="font-size: 0.85rem; margin-bottom: 8px;">Даже если вашему ребенку «повезёт» и он получит заветную койку в общежитии, готовьтесь к худшему. Шумные соседи, круглосуточные вечеринки, антисанитария и полное отсутствие условий для занятий — это не исключение, а суровая реальность большинства студенческих общаг.</p>
+                <p style="font-size: 0.85rem; margin-bottom: 8px; font-weight: 700;">По статистике, до 30% первокурсников, живущих в общежитиях, сталкиваются с серьезными проблемами успеваемости уже после первой сессии. Постоянный стресс, недосып и конфликты с соседями выматывают настолько, что учёба уходит на второй план.</p>
+                <p style="font-size: 0.85rem; margin-bottom: 0; background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #ffaaaa;">
+                    <i class="fas fa-skull-crossbones icon-red"></i> <strong>Финал часто печален:</strong> вместо красного диплома и блестящей карьеры — «хвосты», академические отпуска, а то и отчисление. Год, а то и два потерянного времени, стресс для всей семьи и разочарование в ребёнке. 
+                    <br><em><b>Вы готовы рискнуть будущим ребёнка ради мифической выгоды?</b></em>
+                </p>
+            </div>
         </div>
 
         <!-- Слайд 3: Экономика аренды -->
@@ -345,14 +362,13 @@
             </table>
             
             <div class="total-box fade-in" style="transition-delay: 0.3s; background: #fff; margin-top: 10px;">
-                <p style="font-size: 0.95rem; font-weight: 700; line-height: 1.4;">Это деньги, которые вы подарите чужому человеку вместо того, чтобы вложить их в первый взнос и купить недвижимость СВОЕМУ ребенку. ⚖️</p>
+                <p style="font-size: 0.95rem; font-weight: 700; line-height: 1.4;"><i class="fas fa-scale-balanced icon-gold"></i> Это деньги, которые вы подарите чужому человеку вместо того, чтобы вложить их в первый взнос и купить недвижимость СВОЕМУ ребенку.</p>
             </div>
 
-<div class="highlight-box fade-in" style="border-left-color: #ff9900; background: #fff4e5; margin-top: 10px;">
-    <p style="font-size: 0.9rem; margin-bottom: 0;">⚠️ <strong>Важно:</strong> Многие родители ищут соседей-абитуриентов, чтобы сэкономить. Но тут появляется новая проблема: сожитель может мешать учёбе вашего ребёнка. Поэтому к вопросу «снимаем на двоих или троих» надо подойти очень серьёзно.</p>
-</div>
+            <div class="highlight-box fade-in" style="border-left-color: #ff9900; background: #fff4e5; margin-top: 10px;">
+                <p style="font-size: 0.9rem; margin-bottom: 0;"><i class="fas fa-exclamation-triangle icon-warning"></i> <strong>Важно:</strong> Многие родители ищут соседей-абитуриентов, чтобы сэкономить. Но тут появляется новая проблема: сожитель может мешать учёбе вашего ребёнка. Поэтому к вопросу «снимаем на двоих или троих» надо подойти очень серьёзно.</p>
+            </div>
         </div>
-
 
         <!-- Слайд 4: Транспортное плечо -->
         <div class="slide">
@@ -366,36 +382,36 @@
                 <span style="font-weight: 800; color: var(--primary-black); font-size: 1.1rem; display: block;">45 МИНУТ</span>
                 <span style="font-size: 0.85rem;">Верхний предел комфорта.</span>
             </div>
-            <p style="margin-top: 15px;">Покупая квартиру в 15 минутах на метро от вуза, вы экономите до <strong>5-7 млн ₽</strong> без потери качества жизни. 📈</p>
+            <p style="margin-top: 15px;">Покупая квартиру в 15 минутах на метро от вуза, вы экономите до <strong>5-7 млн ₽</strong> без потери качества жизни. <i class="fas fa-chart-line icon-gold"></i></p>
         </div>
 
-        <!-- Слайд 5: География (ДОБАВЛЕН БЛОК С МЕДИЦИНСКИМИ ВУЗАМИ) -->
+        <!-- Слайд 5: География -->
         <div class="slide">
             <h2>Где искать?</h2>
             <p style="font-size: 0.85rem; margin-bottom: 10px;">Логистика от дома до аудитории решает всё.</p>
             
             <div class="fade-in" style="margin-bottom: 15px;">
-                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);">Юг (Красная ветка)</p>
+                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);"><i class="fas fa-location-dot icon-gold"></i> Юг (Красная ветка)</p>
                 <p style="font-size: 0.85rem;">Для <strong>МГУ, МГИМО, РУДН</strong>. Станции Потапово, Коммунарка. Прямая ветка до Парка Культуры и Университета. Доступность 35-45 мин при цене на 30% ниже центра.</p>
             </div>
             
             <div class="fade-in" style="transition-delay: 0.1s; margin-bottom: 15px;">
-                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);">Восток и Юго-Восток</p>
+                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);"><i class="fas fa-location-dot icon-gold"></i> Восток и Юго-Восток</p>
                 <p style="font-size: 0.85rem;">Для <strong>МГТУ им. Баумана, МЭИ, ГУУ и корпусов ВШЭ</strong> смотрим Перово, Новогиреево, Рязанский проспект. Удобная логистика и развитая вторичка.</p>
             </div>
 
             <div class="fade-in" style="transition-delay: 0.2s; margin-bottom: 15px;">
-                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);">Север (МЦД-1 и Салатовая ветка)</p>
+                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);"><i class="fas fa-location-dot icon-gold"></i> Север (МЦД-1 и Салатовая ветка)</p>
                 <p style="font-size: 0.85rem;">Для <strong>МФТИ и МАИ</strong> — приоритет пешей доступности к МЦД-1 или Люблинско-Дмитровской линии (метро Физтех).</p>
             </div>
 
-            <!-- НОВЫЙ БЛОК: Медицинские вузы -->
+            <!-- Медицинские вузы -->
             <div class="fade-in" style="transition-delay: 0.3s; background: #f5f0e9; padding: 12px; border-radius: 10px; margin-top: 10px;">
-                <p style="font-weight: 700; margin-bottom: 8px; font-size: 1rem; color: var(--accent-gold);">🏥 Для медицинских:</p>
+                <p style="font-weight: 700; margin-bottom: 8px; font-size: 1rem; color: var(--accent-gold);"><i class="fas fa-hospital icon-gold"></i> Для медицинских:</p>
                 <ul style="font-size: 0.85rem; list-style-type: none; margin-left: 0;">
-                    <li style="margin-bottom: 8px;"><strong>Первый МГМУ (Сеченова)</strong> – м. Фрунзенская/Спортивная. Рекомендуем юго-запад (Сокольническая линия): Ломоносовский, Проспект Вернадского, Раменки. Время 30–40 мин.</li>
-                    <li style="margin-bottom: 8px;"><strong>РНИМУ (Пирогова)</strong> – м. Коньково/Беляево/Тёплый Стан. Ищите на Калужско-Рижской линии: Ясенево, Тёплый Стан, Обручевский. Дорога 30–45 мин.</li>
-                    <li style="margin-bottom: 8px;"><strong>МГМСУ (Евдокимова)</strong> – м. Марьина Роща/Менделеевская. Оптимальны районы на Люблинско-Дмитровской линии (Окружная, Верхние Лихоборы, Селигерская) и Савёловский. 35–45 мин.</li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-circle" style="font-size: 0.4rem; color: var(--accent-gold); vertical-align: middle; margin-right: 6px;"></i> <strong>Первый МГМУ (Сеченова)</strong> – м. Фрунзенская/Спортивная. Рекомендуем юго-запад (Сокольническая линия): Ломоносовский, Проспект Вернадского, Раменки. Время 30–40 мин.</li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-circle" style="font-size: 0.4rem; color: var(--accent-gold); vertical-align: middle; margin-right: 6px;"></i> <strong>РНИМУ (Пирогова)</strong> – м. Коньково/Беляево/Тёплый Стан. Ищите на Калужско-Рижской линии: Ясенево, Тёплый Стан, Обручевский. Дорога 30–45 мин.</li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-circle" style="font-size: 0.4rem; color: var(--accent-gold); vertical-align: middle; margin-right: 6px;"></i> <strong>МГМСУ (Евдокимова)</strong> – м. Марьина Роща/Менделеевская. Оптимальны районы на Люблинско-Дмитровской линии (Окружная, Верхние Лихоборы, Селигерская) и Савёловский. 35–45 мин.</li>
                 </ul>
                 <p style="font-size: 0.8rem; margin-top: 5px;">Все варианты укладываются в наше «транспортное плечо» и сохраняют бюджет.</p>
             </div>
@@ -408,13 +424,13 @@
             <p style="font-size: 0.9rem;">Студия 18 м² в форме длинного узкого коридора — это тупиковый актив. Через 5 лет продать такой «Квазимодо» будет сложно и невыгодно.</p>
             
             <div class="highlight-box" style="margin-top: 10px;">
-                <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">Апартаменты vs Квартиры:</p>
+                <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;"><i class="fas fa-scale-balanced icon-gold"></i> Апартаменты vs Квартиры:</p>
                 <p style="font-size: 0.85rem;">При покупке апартаменты дешевле на 15-20%, НО:</p>
                 <ul>
-                    <li>Налог выше в 3-5 раз (от кадастра);</li>
-                    <li>Коммуналка дороже на 20-25%.</li>
+                    <li><i class="fas fa-circle" style="font-size: 0.4rem; color: var(--accent-gold); vertical-align: middle; margin-right: 6px;"></i> Налог выше в 3-5 раз (от кадастра);</li>
+                    <li><i class="fas fa-circle" style="font-size: 0.4rem; color: var(--accent-gold); vertical-align: middle; margin-right: 6px;"></i> Коммуналка дороже на 20-25%.</li>
                 </ul>
-                <p style="font-size: 0.8rem; margin-top: 5px;">Считаем долгосрок: иногда переплата за статус «жилье» окупается за 7 лет только на налогах. 📈</p>
+                <p style="font-size: 0.8rem; margin-top: 5px;">Считаем долгосрок: иногда переплата за статус «жилье» окупается за 7 лет только на налогах. <i class="fas fa-chart-line icon-gold"></i></p>
             </div>
         </div>
 
@@ -424,13 +440,13 @@
             <p>Я не просто продаю метры. Я помогаю построить фундамент для карьеры вашего ребенка в Москве.</p>
             
             <div class="cta-box">
-                <p>Готовы обсудить конкретный вуз и бюджет?</p>
+                <p><i class="fas fa-paper-plane icon-gold"></i> Готовы обсудить конкретный вуз и бюджет?</p>
                 <a href="https://t.me/onlyrieltor" target="_blank" rel="noopener noreferrer" class="btn-primary">Написать в Telegram</a>
             </div>
 
             <div style="margin-top: auto; text-align: center;">
                 <p style="font-weight: 800; color: var(--accent-gold); font-size: 1.1rem;">МАКСИМ АНТИПИН</p>
-                <p style="font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">Риелтор, которому важна правда ⚖️</p>
+                <p style="font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">Риелтор, которому важна правда <i class="fas fa-scale-balanced icon-gold"></i></p>
             </div>
         </div>
     </div>
