@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Гайд: Проживание студента в Москве | Максим Антипин</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-white: #ffffff;
+            --primary-black: #0a0a0a;
+            --accent-gold: #b89a5c;
+            --light-bg: #f9f9f9;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --border: #eeeeee;
+        }
+
+        body {
+            background-color: #111;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            background: var(--primary-white);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slides-wrapper {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100%;
+            width: 100%;
+            height: 100%;
+            padding: 60px 25px 120px 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--primary-white);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--accent-gold);
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary-black);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-medium);
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        .highlight-box {
+            background: var(--light-bg);
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .stat-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 10px 0;
+        }
+
+        .stat-item {
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        .stat-label { font-size: 0.8rem; color: var(--text-medium); }
+        .stat-value { font-weight: 700; color: var(--primary-black); }
+
+        .total-box {
+            background: #fff5f5;
+            border: 1px solid #ffcccc;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .total-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #d00;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-black);
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 15px;
+            transition: 0.3s;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background: #c9ab6e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--accent-gold);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .swipe-hint {
+            position: absolute;
+            bottom: 55px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.65rem;
+            color: #bbb;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: 0.5s ease forwards;
+        }
+
+        .active-slide .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .important-note {
+            font-size: 0.85rem;
+            color: #d00;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .cta-box {
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .cta-box p {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .expense-table {
+            width: 100%;
+            margin: 15px 0;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .expense-table td {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        .expense-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+        }
+        .expense-table .total-row {
+            font-weight: 800;
+            color: var(--accent-gold);
+            border-bottom: none;
+            padding-top: 12px;
+        }
+        .expense-table .med-row {
+            background: #f0f0f0;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+        .med-note {
+            font-size: 0.8rem;
+            color: #d00;
+            margin-top: 5px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+    <div class="slides-wrapper" id="slidesWrapper">
+        
+        <!-- Слайд 1: Обложка -->
+        <div class="slide">
+            <div style="margin-top: 40px;">
+                <p style="color: var(--accent-gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 8px;">Антипин Максим</p>
+                <h1>Гайд для проживания студента в Москве</h1>
+                <p>Стратегия покупки недвижимости для тех, чьи дети поступили в лучшие вузы страны.</p>
+                <div class="highlight-box">
+                    <p style="margin-bottom: 0; font-size: 0.9rem; font-weight: 600;">Логика владения против экономики аренды. ⚖️</p>
+                </div>
+            </div>
+            <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
+                <p style="font-size: 1rem; font-weight: 700;">Лысый Риелтор</p>
+                <p style="font-size: 0.8rem; color: var(--text-medium);">Только цифры и юридическая чистота.</p>
+            </div>
+        </div>
+
+        <!-- Слайд 2: Реальность с общежитиями -->
+        <div class="slide">
+            <h2>Реальность 2026</h2>
+            <p class="fade-in">Нужно понимать сразу: <strong>мест в общежитиях на всех не хватает.</strong> Это факт.</p>
+            <p class="fade-in" style="transition-delay: 0.1s;">Значительная часть фондов отдается иностранным студентам для поддержания международного статуса вузов.</p>
+            <div class="highlight-box fade-in" style="transition-delay: 0.2s; border-left-color: #d00;">
+                <p style="font-size: 0.85rem; font-weight: 700; color: #d00; margin-bottom: 5px;">Приоритет при заселении:</p>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Многодетные, малоимущие, дети участников СВО и социальные льготники. Это справедливо, но оставляет обычного студента за бортом.</p>
+            </div>
+            <p class="fade-in" style="transition-delay: 0.3s; font-size: 0.9rem;">Если вы не в этих списках — аренда или покупка станут вашим вопросом №1 уже в августе.</p>
+        </div>
+
+        <!-- Слайд 3: Экономика аренды -->
+        <div class="slide">
+            <h2>Ловушка аренды</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 5px;">Средняя аренда «однушки» в 2026: <strong>80 000 ₽ / мес.</strong></p>
+            
+            <table class="expense-table fade-in">
+                <tr><td>1-й год</td><td>960 000 ₽</td></tr>
+                <tr><td>2-й год (+10%)</td><td>1 056 000 ₽</td></tr>
+                <tr><td>3-й год (+10%)</td><td>1 161 600 ₽</td></tr>
+                <tr><td>4-й год (+10%)</td><td>1 277 760 ₽</td></tr>
+                <tr><td>5-й год (+10%)</td><td>1 405 536 ₽</td></tr>
+                <tr class="total-row"><td>ИТОГО за 5 лет</td><td>≈ 5 860 000 ₽</td></tr>
+                <tr><td style="padding-top: 15px;">6-й год</td><td style="padding-top: 15px;">1 546 090 ₽</td></tr>
+                <tr><td>7-й год</td><td>1 700 699 ₽</td></tr>
+                <tr><td>8-й год</td><td>1 870 769 ₽</td></tr>
+                <tr class="total-row" style="color: #d00;"><td>ДЛЯ МЕДВУЗОВ (8 лет)</td><td>≈ 10 980 000 ₽</td></tr>
+            </table>
+            
+            <div class="total-box fade-in" style="transition-delay: 0.3s; background: #fff; margin-top: 10px;">
+                <p style="font-size: 0.95rem; font-weight: 700; line-height: 1.4;">Это деньги, которые вы подарите чужому человеку вместо того, чтобы вложить их в первый взнос и купить недвижимость СВОЕМУ ребенку. ⚖️</p>
+            </div>
+        </div>
+
+        <!-- Слайд 4: Транспортное плечо -->
+        <div class="slide">
+            <h2>Транспортное плечо</h2>
+            <p>Мы ищем не адрес рядом с вузом, а время в пути.</p>
+            <div class="stat-item fade-in" style="background: #fdfaf4; border-color: var(--accent-gold); padding: 15px; display: block;">
+                <span style="font-weight: 800; color: var(--accent-gold); font-size: 1.1rem; display: block;">30 МИНУТ</span>
+                <span style="font-size: 0.85rem;">До МГУ, ВШЭ, МГИМО или МГТУ.</span>
+            </div>
+            <div class="stat-item fade-in" style="margin-top: 10px; transition-delay: 0.1s; padding: 15px; display: block;">
+                <span style="font-weight: 800; color: var(--primary-black); font-size: 1.1rem; display: block;">45 МИНУТ</span>
+                <span style="font-size: 0.85rem;">Верхний предел комфорта.</span>
+            </div>
+            <p style="margin-top: 15px;">Покупая квартиру в 15 минутах на метро от вуза, вы экономите до <strong>5-7 млн ₽</strong> без потери качества жизни. 📈</p>
+        </div>
+
+        <!-- Слайд 5: География (ДОБАВЛЕН БЛОК С МЕДИЦИНСКИМИ ВУЗАМИ) -->
+        <div class="slide">
+            <h2>Где искать?</h2>
+            <p style="font-size: 0.85rem; margin-bottom: 10px;">Логистика от дома до аудитории решает всё.</p>
+            
+            <div class="fade-in" style="margin-bottom: 15px;">
+                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);">Юг (Красная ветка)</p>
+                <p style="font-size: 0.85rem;">Для <strong>МГУ, МГИМО, РУДН</strong>. Станции Потапово, Коммунарка. Прямая ветка до Парка Культуры и Университета. Доступность 35-45 мин при цене на 30% ниже центра.</p>
+            </div>
+            
+            <div class="fade-in" style="transition-delay: 0.1s; margin-bottom: 15px;">
+                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);">Восток и Юго-Восток</p>
+                <p style="font-size: 0.85rem;">Для <strong>МГТУ им. Баумана, МЭИ, ГУУ и корпусов ВШЭ</strong> смотрим Перово, Новогиреево, Рязанский проспект. Удобная логистика и развитая вторичка.</p>
+            </div>
+
+            <div class="fade-in" style="transition-delay: 0.2s; margin-bottom: 15px;">
+                <p style="font-weight: 700; margin-bottom: 4px; font-size: 0.9rem; color: var(--text-dark);">Север (МЦД-1 и Салатовая ветка)</p>
+                <p style="font-size: 0.85rem;">Для <strong>МФТИ и МАИ</strong> — приоритет пешей доступности к МЦД-1 или Люблинско-Дмитровской линии (метро Физтех).</p>
+            </div>
+
+            <!-- НОВЫЙ БЛОК: Медицинские вузы -->
+            <div class="fade-in" style="transition-delay: 0.3s; background: #f5f0e9; padding: 12px; border-radius: 10px; margin-top: 10px;">
+                <p style="font-weight: 700; margin-bottom: 8px; font-size: 1rem; color: var(--accent-gold);">🏥 Для медицинских:</p>
+                <ul style="font-size: 0.85rem; list-style-type: none; margin-left: 0;">
+                    <li style="margin-bottom: 8px;"><strong>Первый МГМУ (Сеченова)</strong> – м. Фрунзенская/Спортивная. Рекомендуем юго-запад (Сокольническая линия): Ломоносовский, Проспект Вернадского, Раменки. Время 30–40 мин.</li>
+                    <li style="margin-bottom: 8px;"><strong>РНИМУ (Пирогова)</strong> – м. Коньково/Беляево/Тёплый Стан. Ищите на Калужско-Рижской линии: Ясенево, Тёплый Стан, Обручевский. Дорога 30–45 мин.</li>
+                    <li style="margin-bottom: 8px;"><strong>МГМСУ (Евдокимова)</strong> – м. Марьина Роща/Менделеевская. Оптимальны районы на Люблинско-Дмитровской линии (Окружная, Верхние Лихоборы, Селигерская) и Савёловский. 35–45 мин.</li>
+                </ul>
+                <p style="font-size: 0.8rem; margin-top: 5px;">Все варианты укладываются в наше «транспортное плечо» и сохраняют бюджет.</p>
+            </div>
+        </div>
+
+        <!-- Слайд 6: Ликвидность объекта -->
+        <div class="slide">
+            <h2>Ликвидность объекта</h2>
+            <p><strong>Избегайте «нефункциональных вагонов».</strong></p>
+            <p style="font-size: 0.9rem;">Студия 18 м² в форме длинного узкого коридора — это тупиковый актив. Через 5 лет продать такой «Квазимодо» будет сложно и невыгодно.</p>
+            
+            <div class="highlight-box" style="margin-top: 10px;">
+                <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">Апартаменты vs Квартиры:</p>
+                <p style="font-size: 0.85rem;">При покупке апартаменты дешевле на 15-20%, НО:</p>
+                <ul>
+                    <li>Налог выше в 3-5 раз (от кадастра);</li>
+                    <li>Коммуналка дороже на 20-25%.</li>
+                </ul>
+                <p style="font-size: 0.8rem; margin-top: 5px;">Считаем долгосрок: иногда переплата за статус «жилье» окупается за 7 лет только на налогах. 📈</p>
+            </div>
+        </div>
+
+        <!-- Слайд 7: CTA -->
+        <div class="slide">
+            <h2>Начнем расчет?</h2>
+            <p>Я не просто продаю метры. Я помогаю построить фундамент для карьеры вашего ребенка в Москве.</p>
+            
+            <div class="cta-box">
+                <p>Готовы обсудить конкретный вуз и бюджет?</p>
+                <a href="https://t.me/onlyrieltor" target="_blank" rel="noopener noreferrer" class="btn-primary">Написать в Telegram</a>
+            </div>
+
+            <div style="margin-top: auto; text-align: center;">
+                <p style="font-weight: 800; color: var(--accent-gold); font-size: 1.1rem;">МАКСИМ АНТИПИН</p>
+                <p style="font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">Риелтор, которому важна правда ⚖️</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-dots" id="dotsContainer"></div>
+    <div class="swipe-hint" id="swipeHint">Листайте вправо <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<script>
+    (function() {
+        const wrapper = document.getElementById('slidesWrapper');
+        const dotsContainer = document.getElementById('dotsContainer');
+        const slides = document.querySelectorAll('.slide');
+        const hint = document.getElementById('swipeHint');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let isAnimating = false;
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.setAttribute('role', 'button');
+            dot.setAttribute('aria-label', `Перейти к слайду ${i + 1}`);
+            dot.addEventListener('click', function() {
+                if (!isAnimating && i !== currentSlide) {
+                    currentSlide = i;
+                    updateSlides();
+                }
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlides() {
+            if (isAnimating) return;
+            isAnimating = true;
+            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            slides.forEach((s, i) => s.classList.toggle('active-slide', i === currentSlide));
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+            hint.style.opacity = currentSlide === totalSlides - 1 ? '0' : '1';
+            setTimeout(() => { isAnimating = false; }, 400);
+        }
+
+        let touchStartX = 0;
+        const minSwipeDistance = 50;
+
+        wrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, {passive: true});
+
+        wrapper.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > minSwipeDistance) {
+                if (diff > 0 && currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlides();
+                } else if (diff < 0 && currentSlide > 0) {
+                    currentSlide--;
+                    updateSlides();
+                }
+            }
+        }, {passive: true});
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (!isAnimating && currentSlide > 0) {
+                    currentSlide--;
+                    updateSlides();
+                }
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                if (!isAnimating && currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlides();
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            wrapper.style.transition = 'none';
+            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            setTimeout(() => { wrapper.style.transition = ''; }, 50);
+        });
+
+        updateSlides();
+    })();
+</script>
+</body>
+</html>
